@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Server communication failure",
-      "isClosed": true,
+      "isClosed": false,
       "createdAt": "2017-06-20T06:41:12.404Z"
     },
     {
@@ -29,6 +29,12 @@
       "name": "Unable to add a new bug",
       "isClosed": false,
       "createdAt": "2017-06-29T10:09:58.640Z"
+    },
+    {
+      "id": 6,
+      "name": "Adding a new bug",
+      "isClosed": false,
+      "createdAt": "2017-07-01T11:34:57.724Z"
     }
   ],
   "employees": [

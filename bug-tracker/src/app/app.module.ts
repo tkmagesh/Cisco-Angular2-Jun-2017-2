@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
 import { BugOperationsService } from './bug-tracker/services/bugOperations.service';
 import { BugStorageService } from './bug-tracker/services/bugStorage.service';
+import { BugServerService } from './bug-tracker/services/bugServer.service';
 
 import { TrimTextPipe } from './bug-tracker/pipes/trimText.pipe';
 import { BugStatsComponent } from './bug-tracker/bug-stats/bugStats.component';
@@ -27,9 +29,10 @@ import { ElapsedPipe } from './bug-tracker/pipes/elapsed.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [BugOperationsService, BugStorageService],
+  providers: [BugOperationsService, BugStorageService, BugServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

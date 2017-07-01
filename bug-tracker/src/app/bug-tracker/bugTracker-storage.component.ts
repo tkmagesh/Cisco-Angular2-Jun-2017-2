@@ -4,8 +4,6 @@ import { BugStorageService } from './services/bugStorage.service';
 //import { Http } from '@angular/http';
 //import 'rxjs/add/operator/map';
 
-import { BugServerService } from './services/bugServer.service';
-
 @Component({
 	selector : 'bug-tracker',
 	templateUrl : 'bugTracker.component.html',
@@ -14,27 +12,28 @@ import { BugServerService } from './services/bugServer.service';
 export class BugTrackerComponent implements OnInit{
 	bugs : Array<IBug> = [];
 
-	constructor(private _bugStorageService : BugStorageService, private _bugServer : BugServerService){
+	constructor(private _bugStorageService : BugStorageService, private _http : Http){
 		
 	}
 
 	ngOnInit(){
-		this._bugServer
-			.getAll()
-			.subscribe(data => this.bugs = data);
+		/*var observable = this._http.get('http://localhost:3000/bugs');
+		observable
+			.map(response => response.json())
+			.subscribe(data => this.bugs = data);*/
+
+		this.bugs = this._bugStorageService.getAll();
 	}
 
 	onCreateBug(newBugName : string) : void {
 		//this.bugs.push(newBug)
-		this._bugServer
-			.addNew(newBugName)
-			.subscribe(newBug => this.bugs = [...this.bugs, newBug]);
+		let newBug = this._bugStorageService.addNew(newBugName);
+		this.bugs = [...this.bugs, newBug];
 	}
 
 	onBugClick(bugToToggle : IBug): void {
-		this._bugServer
-			.toggle(bugToToggle)
-			.subscribe(toggledBug => this.bugs = this.bugs.map(bugInList => bugInList === bugToToggle ? toggledBug : bugInList));
+		let toggledBug = this._bugStorageService.toggle(bugToToggle);
+		this.bugs = this.bugs.map(bugInList => bugInList === bugToToggle ? toggledBug : bugInList);
 	}
 
 	onRemoveClosedClick() : void {
