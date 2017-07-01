@@ -1,14 +1,14 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { IBug } from '../models/IBug';
-import { BugOperationsService } from '../services/bugOperations.service';
+
+
 
 @Component({
 	selector : 'bug-edit',
 	template : `
 		<section class="edit">
 			<label for="">New Bug :</label>
-			<input type="text" #txtBugName>
-			<input type="button" value="Create" (click)="onCreateClick(txtBugName.value)">
+			<input type="text" [(ngModel)]="newBugName">
+			<input type="button" value="Create" (click)="onCreateClick()">
 		</section>
 	`,
 	styles : [
@@ -22,14 +22,16 @@ import { BugOperationsService } from '../services/bugOperations.service';
 export class BugEditComponent{
 
 	@Output()
-	newBug : EventEmitter<IBug> = new EventEmitter<IBug>();
+	newBug : EventEmitter<string> = new EventEmitter<string>();
 
-	constructor(private _bugOperationsService : BugOperationsService){
+	newBugName : string = '';
+
+	constructor(){
 
 	}
 
-	onCreateClick(bugName : string) : void {
-		let newBugObj : IBug = this._bugOperationsService.createNew(bugName);
-		this.newBug.emit(newBugObj);
+	onCreateClick() : void {
+		
+		this.newBug.emit(this.newBugName);
 	}
 }

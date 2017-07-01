@@ -6,10 +6,12 @@ interface IComparer{
 
 
 @Pipe({
-	name : 'orderBy'
+	name : 'orderBy',
+	pure : true
 })
 export class OrderByPipe implements PipeTransform{
 	transform(data : Array<any>, attrName : string, descending : boolean = false) : Array<any> {
+		console.log('orderBy triggered');
 		if (!attrName)
 			return data;
 		let comparer = this.getComparerFor(attrName);
