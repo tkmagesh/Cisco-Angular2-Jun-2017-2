@@ -5,7 +5,7 @@ import { BugOperationsService } from './services/bugOperations.service';
 @Component({
 	selector : 'bug-tracker',
 	templateUrl : 'bugTracker.component.html',
-	styleUrls : ['bugTracker.component.css']
+	styleUrls : ['bugTracker.component.css'],
 })
 export class BugTrackerComponent{
 	bugs : Array<IBug> = [];
@@ -14,8 +14,7 @@ export class BugTrackerComponent{
 		
 	}
 
-	onCreateClick(bugName : string) : void {
-		let newBug : IBug = this._bugOperationsService.createNew(bugName);
+	onCreateBug(newBug : IBug) : void {
 		this.bugs.push(newBug)
 	}
 
