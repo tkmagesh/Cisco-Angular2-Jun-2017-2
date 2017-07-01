@@ -1,0 +1,13 @@
+Bug Tracker
+-----------
+1. Add a new bug
+2. List the bugs
+3. Toggle the 'closed' status of the bugs
+4. Remove closed bugs
+5. Display bug statistics
+6. Improve the bug display
+7. Sort the bugs
+8. Filter the bugs (homework)
+9. Persist the bug in localStorage
+10. Display 'createdAt' for each bug
+11. Persist the bugs in the server
