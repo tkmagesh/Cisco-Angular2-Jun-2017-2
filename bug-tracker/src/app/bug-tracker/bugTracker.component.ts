@@ -30,11 +30,5 @@ export class BugTrackerComponent{
 		}
 	}
 
-	getClosedCount() : number {
-		let closedCount = 0;
-		for(let index = 0; index < this.bugs.length; index++)
-			if (this.bugs[index].isClosed)
-				++closedCount;
-		return closedCount;	
-	}
+	
 }

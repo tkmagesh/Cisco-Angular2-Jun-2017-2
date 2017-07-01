@@ -1,9 +1,5 @@
 <div class="content">
-	<section class="stats">
-		<span class="closed">{{getClosedCount()}}</span>
-		<span> / </span>
-		<span>{{bugs.length}}</span>
-	</section>
+	<bug-stats [data]="bugs"></bug-stats>
 	<section class="sort">
 		<label>Order By :</label>
 		<select name="" id="">
@@ -26,7 +22,7 @@
 					(click)="onBugClick(bug)"
 					[ngClass] = "{closed : bug.isClosed}"
 				>
-					{{bug | json}}
+					{{bug.name | trimText}}
 				</span>
 				<div class="datetime">[Created At]</div>
 			</li>
