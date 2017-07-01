@@ -2,17 +2,17 @@
 	<bug-stats [data]="bugs"></bug-stats>
 	<section class="sort">
 		<label>Order By :</label>
-		<select name="" id="">
-			<option value="">Name</option>
-			<option value="">Status</option>
+		<select [(ngModel)]="sortBugBy">
+			<option value="name">Name</option>
+			<option value="isClosed">Status</option>
 		</select>
 		<label for="">Descending ? :</label>
-		<input type="checkbox" name="" id="">
+		<input type="checkbox" [(ngModel)]="orderByDescending">
 	</section>
 	<bug-edit (newBug)="onCreateBug($event)"></bug-edit>
 	<section class="list">
 		<ol>
-			<li *ngFor="let bug of bugs">
+			<li *ngFor="let bug of (bugs|orderBy:sortBugBy:orderByDescending)">
 				<span 
 					class="bugname" 
 					(click)="onBugClick(bug)"

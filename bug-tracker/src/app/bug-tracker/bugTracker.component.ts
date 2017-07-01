@@ -11,7 +11,10 @@ export class BugTrackerComponent{
 	bugs : Array<IBug> = [];
 
 	constructor(private _bugOperationsService : BugOperationsService){
-		
+		this.bugs.push(this._bugOperationsService.createNew('Server communication failure'));
+		this.bugs.push(this._bugOperationsService.createNew('User actions not recognized'));
+		this.bugs.push(this._bugOperationsService.createNew('Application not responding'));
+		this.bugs.push(this._bugOperationsService.createNew('Data cleansing error'));
 	}
 
 	onCreateBug(newBug : IBug) : void {
